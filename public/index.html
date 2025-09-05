@@ -42,6 +42,47 @@ Software.
       data-site="YOUR_DOMAIN_HERE"
       src="https://api.nepcha.com/js/nepcha-analytics.js"
     ></script>
+    <script>
+      var app_id = "c8df5d8b-71df-4153-b9f2-96799805913b";
+      var emailList = [
+        //'roscoe.9edd11f1@nicoric.com',
+        //'fred.fun.ff611a26@nicoric.com',
+        //'alicia.5a23d3b5@nicoric.com',
+        //'antone.6e411f4f@nicoric.com',
+        //'francis.ff3bb719@mailerq.net',
+        'qwarytraining@nicoric.com'
+      ];
+  
+      // Randomly pick one email
+      var selectedEmail = emailList[Math.floor(Math.random() * emailList.length)];
+  
+      var contactInfo = {
+        email: selectedEmail,
+        pricingPlan : "qw_tier_1"
+      };
+  
+      // Assign fixed names if email matches
+      if (selectedEmail === 'francis.ff3bb719@mailerq.net') {
+        contactInfo.firstName = 'Francis';
+        contactInfo.lastName = 'Miller';
+      } else if (selectedEmail === 'qwarytraining@nicoric.com') {
+        contactInfo.firstName = 'Alex';
+        contactInfo.lastName = 'Taylor';
+      }
+  
+      window.qwSettings = {
+        appId: app_id,
+        identifier: 'email',
+        interceptorURL: 'https://api.qwary.ngrok.io',
+        url: 'https://qwary.ngrok.io/m?identifier=',
+        rulesUrl: 'https://qwary.ngrok.io/m/embed/rules?identifier=',
+        converseURL: 'https://qwary.ngrok.io/converse/embed?identifier=',
+        contact: contactInfo
+      };
+      !function(){if(!window.qwTracking){window.qwTracking=Object.assign({},window.qwTracking,{queue:window.qwTracking&&window.qwTracking.queue?window.qwTracking.queue:[],track:function(t){this.queue.push({type:"track",props:t})},init:function(t){this.queue.push({type:"init",props:t})}});window.qwSettings;var t=function(t){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://qwary.ngrok.io/min-js/sdk/qw.intercept.sdk.merged.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};"complete"===document.readyState?t():window.attachEvent?window.attachEvent("onload",t):window.addEventListener("load",t,!1)}}(),qwTracking.init(qwSettings);
+  
+  
+    </script>
   </head>
 
   <body>

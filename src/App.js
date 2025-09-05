@@ -53,7 +53,23 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 
+import { waitForQwTracking } from "./qwary";
+
+function useQwaryPageViews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Call on each route change
+    waitForQwTracking(() => {
+      if (window.qwTracking && typeof window.qwTracking.refreshPageView === "function") {
+        window.qwTracking.refreshPageView();
+      }
+    });
+  }, [location.pathname, location.search, location.hash]);
+}
+
 export default function App() {
+  useQwaryPageViews();
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
